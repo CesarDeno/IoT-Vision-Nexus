@@ -27,17 +27,17 @@ Starts MQTT, MongoDB, Node-RED, and DeepStack.
 docker-compose up -d
 ```
 
-## 3. Setup de Dependencias (Node-RED)
+## 3. Dependency Setup (Node-RED)
 
-El proyecto requiere nodos adicionales. Una vez levantados los contenedores:
+The project requires additional nodes. Once the containers are up:
 
-1. Instala las dependencias:
+1. Install dependencies:
 
    ```bash
    docker exec -it nodered_core npm install
    ```
 
-2. Reinicia Node-RED:
+2. Restart Node-RED:
    ```bash
    docker restart nodered_core
    ```
