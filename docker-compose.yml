@@ -27,7 +27,7 @@ services:
          - mosquitto_data:/mosquitto/data
          - mosquitto_log:/mosquitto/log
 
-   # Node-RED: Orquestación y Dashboard
+   # --- Node-RED ---
    node-red:
       image: nodered/node-red:latest
       container_name: nodered_core
@@ -42,7 +42,7 @@ services:
       depends_on:
          - mosquitto # Espera al broker
 
-   # DeepStack: Visión por Computadora Local
+   # --- DeepStack ---
    deepstack:
       image: deepquestai/deepstack:cpu
       container_name: deepstack_vision
@@ -51,7 +51,7 @@ services:
       environment:
          - VISION-SCENE=True # Detección de escenas
          - VISION-DETECTION=True # Detección de objetos
-         - VISION-FACE=True # Reconocimiento facial (Requerido para accesos)
+         - VISION-FACE=True # Reconocimiento facial
       networks:
          - iot_net
 
