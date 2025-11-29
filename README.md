@@ -34,7 +34,7 @@ El proyecto requiere nodos adicionales. Una vez levantados los contenedores:
 1. Instala las dependencias:
 
    ```bash
-   docker exec -it nodered_core npm install node-red-dashboard node-red-node-mongodb
+   docker exec -it nodered_core npm install
    ```
 
 2. Reinicia Node-RED:
