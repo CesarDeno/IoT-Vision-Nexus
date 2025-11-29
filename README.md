@@ -1,13 +1,12 @@
-# IoT-Vision-Nexus: Cyber-Physical System & Digital Twin
+# IoT-Vision-Nexus: Cyber-Physical System & Node-RED integration
 
-A comprehensive IoT solution fusing real-time ESP32 telemetry, local Computer Vision (DeepStack), and a synchronized Unity Digital Twin, orchestrated via Node-RED with GenAI reporting.
+A comprehensive IoT solution fusing real-time ESP32 telemetry, local Computer Vision (DeepStack), orchestrated via Node-RED with GenAI reporting.
 
 ## 🏗️ Tech Stack
 
 -  **Edge:** ESP32 (ESP-IDF + Digital Filtering)
 -  **Vision:** DeepStack (Local Face/Object Detection)
 -  **Logic:** Node-RED & MQTT flow orchestration
--  **Digital Twin:** Unity (Real-time 3D Sync)
 -  **GenAI:** ChatGPT (Incident Reporting)
 
 ## 🚀 Installation & Execution
