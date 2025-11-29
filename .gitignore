@@ -1,0 +1,23 @@
+Python
+
+pycache/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+*.log
+
+IDE
+
+.vscode/
+.idea/
+
+Docker / Local Data
+
+mongo_data/
+mosquitto_data/
+mosquitto_log/
+
+macOS
+
+.DS_Store
