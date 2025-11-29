@@ -21,3 +21,8 @@ mosquitto_log/
 macOS
 
 .DS_Store
+
+# Dependencias de Node (¡Lo más importante!)
+node_red_data/node_modules
+**/node_modules
+node_red_data/.npm

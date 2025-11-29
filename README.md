@@ -27,14 +27,20 @@ Starts MQTT, MongoDB, Node-RED, and DeepStack.
 docker-compose up -d
 ```
 
-### 3. Middleware Execution
+## 3. Setup de Dependencias (Node-RED)
 
-Fixes Windows socket loop issues.
+El proyecto requiere nodos adicionales. Una vez levantados los contenedores:
 
-```bash
-cd src
-python run.py
-```
+1. Instala las dependencias:
+
+   ```bash
+   docker exec -it nodered_core npm install node-red-dashboard node-red-node-mongodb
+   ```
+
+2. Reinicia Node-RED:
+   ```bash
+   docker restart nodered_core
+   ```
 
 ## 🔌 Services & Credentials
 

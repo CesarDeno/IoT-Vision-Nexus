@@ -1,0 +1,663 @@
+[
+    {
+        "id": "tab_sentinel",
+        "type": "tab",
+        "label": "Sentinel Core",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "broker_mosquitto",
+        "type": "mqtt-broker",
+        "name": "Local Mosquitto",
+        "broker": "mosquitto_broker",
+        "port": "1883",
+        "clientid": "nodered_core",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "group_dashboard",
+        "type": "ui_group",
+        "name": "Access Control",
+        "tab": "",
+        "order": 1,
+        "disp": true,
+        "width": "10",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "1bab4c633df1172e",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-dark",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#000000",
+                "baseFont": "Verdana,Verdana,Geneva,sans-serif",
+                "edited": false,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "Verdana,Verdana,Geneva,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#097479",
+                    "value": "#097479",
+                    "edited": true
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#0eb8c0",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "Verdana,Verdana,Geneva,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "256eacd9a6aa3e78",
+        "type": "ui_tab",
+        "name": "Smart Access System",
+        "icon": "dashboard"
+    },
+    {
+        "id": "02a8869d75ebadfd",
+        "type": "ui_group",
+        "name": "Group 3",
+        "tab": "256eacd9a6aa3e78",
+        "order": 3,
+        "disp": true,
+        "width": 6
+    },
+    {
+        "id": "mongo_conn_iot",
+        "type": "mongodb",
+        "hostname": "mongo_iot_db",
+        "topology": "direct",
+        "connectOptions": "authSource=admin",
+        "port": "27017",
+        "db": "iot_project",
+        "name": "MongoDB Docker"
+    },
+    {
+        "id": "1915cbc1c860ad50",
+        "type": "ui_group",
+        "name": "Panel de Acceso",
+        "tab": "256eacd9a6aa3e78",
+        "order": 1,
+        "disp": true,
+        "width": "10",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "1a0ece8aa888b84f",
+        "type": "ui_group",
+        "name": "Histórico y Estadísticas",
+        "tab": "256eacd9a6aa3e78",
+        "order": 2,
+        "disp": true,
+        "width": "10",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "1c5decd3881ce31b",
+        "type": "mqtt in",
+        "z": "tab_sentinel",
+        "name": "RX: iot/telemetry",
+        "topic": "iot/telemetry",
+        "qos": "0",
+        "datatype": "json",
+        "broker": "broker_mosquitto",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 100,
+        "y": 60,
+        "wires": [
+            [
+                "d0021c715745e986"
+            ]
+        ]
+    },
+    {
+        "id": "d0021c715745e986",
+        "type": "switch",
+        "z": "tab_sentinel",
+        "name": "1. ¿Auth Física?",
+        "property": "payload.access_granted",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 300,
+        "y": 120,
+        "wires": [
+            [
+                "ui_template_cam_feed",
+                "ae851720952148f8"
+            ],
+            [
+                "9c9da566b1f79273"
+            ]
+        ]
+    },
+    {
+        "id": "ae851720952148f8",
+        "type": "function",
+        "z": "tab_sentinel",
+        "name": "2. Decodificar Imagen & Prep",
+        "func": "// Guardamos datos del ESP32 para usarlos después\nflow.set('current_device', msg.payload.device_id);\nflow.set('current_method', msg.payload.access_method);\n\n// Convertir Base64 a Buffer para DeepStack\n// Asumimos que msg.payload.img viene sin el prefijo 'data:image/jpg;base64,'\n// Si lo trae, habría que hacer un split.\nvar imgString = msg.payload.img;\nvar imgBuffer = Buffer.from(imgString, 'base64');\n\nmsg.payload = imgBuffer;\n\n// Headers para DeepStack\nmsg.headers = {};\nmsg.headers[\"Content-Type\"] = \"image/jpeg\";\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 120,
+        "wires": [
+            [
+                "d37bbea94c332873"
+            ]
+        ]
+    },
+    {
+        "id": "d37bbea94c332873",
+        "type": "http request",
+        "z": "tab_sentinel",
+        "name": "POST DeepStack",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://deepstack_vision:5000/v1/vision/detection",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 770,
+        "y": 60,
+        "wires": [
+            [
+                "3ea843174f2f324c",
+                "170cab5f1e2a1935"
+            ]
+        ]
+    },
+    {
+        "id": "3ea843174f2f324c",
+        "type": "function",
+        "z": "tab_sentinel",
+        "name": "3. Lógica 2FA & Prompt",
+        "func": "const predictions = msg.payload.predictions || [];\n// Validar si es una persona (Seguridad Biométrica)\nconst personDetected = predictions.find(p => p.label === 'person' && p.confidence > 0.6);\n\n// Recuperar datos previos\nconst method = flow.get('current_method') || 'Desconocido';\nconst device = flow.get('current_device');\n\nlet accessFinal = false;\nlet prompt = \"\";\nlet logStatus = \"\";\n\nif (personDetected) {\n    accessFinal = true;\n    logStatus = \"GRANTED\";\n    prompt = `Genera un mensaje corto (max 15 palabras) con emojis celebrando que el usuario ha sido verificado visualmente tras usar ${method}.`;\n} else {\n    accessFinal = false;\n    logStatus = \"DENIED_VISION\";\n    prompt = `Genera una alerta seria y corta (max 15 palabras) indicando que se detectó uso de ${method} pero NO se ve a ninguna persona en cámara. Posible intento de hackeo.`;\n}\n\n// Guardar estado para el siguiente nodo\nmsg.access_final = accessFinal;\nmsg.log_status = logStatus;\n\n// Payload para OpenAI\nmsg.payload = {\n    \"model\": \"gpt-3.5-turbo\",\n    \"messages\": [\n        {\"role\": \"system\", \"content\": \"Eres un sistema de seguridad física.\"}, \n        {\"role\": \"user\", \"content\": prompt}\n    ],\n    \"temperature\": 0.7\n};\n\nmsg.headers = {\n    \"Content-Type\": \"application/json\",\n    \"Authorization\": \"Bearer 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\" \n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 950,
+        "y": 120,
+        "wires": [
+            [
+                "1e7ab3460e8533b9"
+            ]
+        ]
+    },
+    {
+        "id": "1e7ab3460e8533b9",
+        "type": "http request",
+        "z": "tab_sentinel",
+        "name": "ChatGPT Gen",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1180,
+        "y": 120,
+        "wires": [
+            [
+                "5a76b3a2cae0890f"
+            ]
+        ]
+    },
+    {
+        "id": "5a76b3a2cae0890f",
+        "type": "function",
+        "z": "tab_sentinel",
+        "name": "4. Salidas y Dashboard",
+        "func": "// Extraer respuesta IA\nconst aiText = msg.payload.choices[0].message.content;\nconst timestamp = new Date().toLocaleTimeString();\n\n// 1. Mensaje para MQTT (Comando físico)\n// NOTA: Aquí inyectamos los datos extra que necesita el nodo de MongoDB\nconst mqttMsg = {\n    payload: {\n        \"action\": msg.access_final ? \"OPEN\" : \"CLOSE\",\n        \"reason\": aiText\n    },\n    // Estas propiedades pasan al siguiente nodo para guardar en BD\n    ai_text_raw: aiText,\n    log_status: msg.log_status,\n    access_final: msg.access_final\n};\n\n// 2. Mensaje para UI (Texto)\nconst uiTextMsg = { payload: aiText };\n\n// 3. Mensaje para Log (Template HTML)\nconst color = msg.access_final ? \"green\" : \"red\";\nconst logHtml = `<p style=\"color:${color}\"><b>[${timestamp}]</b> ${msg.log_status}: ${aiText}</p>`;\nconst uiLogMsg = { payload: logHtml };\n\n// 4. Datos para Gráfica (1 para éxito, 0 para fallo)\nconst chartMsg = {\n    payload: msg.access_final ? 1 : 0,\n    topic: msg.log_status\n};\n\nreturn [mqttMsg, uiTextMsg, uiLogMsg, chartMsg];",
+        "outputs": 4,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 240,
+        "wires": [
+            [
+                "24f2b2b304e60550",
+                "func_prep_mongo_doc"
+            ],
+            [
+                "3bf7e46edc8ec8d4"
+            ],
+            [
+                "f1e948b53f0df415"
+            ],
+            [
+                "c2a2f91c2513f8da"
+            ]
+        ],
+        "outputLabels": [
+            "MQTT Command",
+            "Dashboard Text",
+            "Dashboard Log",
+            "Dashboard Chart"
+        ]
+    },
+    {
+        "id": "24f2b2b304e60550",
+        "type": "mqtt out",
+        "z": "tab_sentinel",
+        "name": "TX: iot/commands",
+        "topic": "iot/commands",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "broker_mosquitto",
+        "x": 1250,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "3bf7e46edc8ec8d4",
+        "type": "ui_text",
+        "z": "tab_sentinel",
+        "group": "1915cbc1c860ad50",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Estado del Sistema:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 1000,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "f1e948b53f0df415",
+        "type": "ui_template",
+        "z": "tab_sentinel",
+        "group": "1a0ece8aa888b84f",
+        "name": "Activity Log",
+        "order": 1,
+        "width": 10,
+        "height": 4,
+        "format": "<div style=\"height: 100%; overflow-y: auto; font-family: monospace; font-size: 12px;\">\n    <div ng-repeat=\"line in logs track by $index\" ng-bind-html=\"line\"\n        style=\"margin-bottom: 4px; border-bottom: 1px solid #eee; padding-bottom: 2px;\">\n    </div>\n</div>\n\n<script>\n    (function(scope) {\n        // Inicializa la lista si no existe\n        scope.logs = scope.logs || [];\n\n        // Vigila los mensajes entrantes\n        scope.$watch('msg', function(msg) {\n            if (msg && msg.payload) {\n                // CASO A: Llega el Historial (Es un Array de textos)\n                if (Array.isArray(msg.payload)) {\n                    // Reemplazamos la lista actual con el historial\n                    scope.logs = msg.payload;\n                } \n                // CASO B: Llega un evento en vivo (Es un solo texto HTML)\n                else {\n                    // Lo agregamos al principio de la lista\n                    scope.logs.unshift(msg.payload);\n                    // Limitamos a 50 líneas para no saturar la memoria\n                    if (scope.logs.length > 50) scope.logs.pop();\n                }\n            }\n        });\n    })(scope);\n</script>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 970,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c2a2f91c2513f8da",
+        "type": "ui_chart",
+        "z": "tab_sentinel",
+        "name": "",
+        "group": "1a0ece8aa888b84f",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "Intentos de Acceso",
+        "chartType": "pie",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 990,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9c9da566b1f79273",
+        "type": "change",
+        "z": "tab_sentinel",
+        "name": "Set Denied",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Acceso Denegado por Hardware (Código Incorrecto)",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 470,
+        "y": 300,
+        "wires": [
+            [
+                "3bf7e46edc8ec8d4"
+            ]
+        ]
+    },
+    {
+        "id": "ui_template_cam_feed",
+        "type": "ui_template",
+        "z": "tab_sentinel",
+        "group": "1915cbc1c860ad50",
+        "name": "Live Camera Feed",
+        "order": 2,
+        "width": 10,
+        "height": 9,
+        "format": "<h3>📸 Último Intento</h3>\n\n<img\n    src=\"data:image/jpeg;base64,{{msg.payload.img}}\"\n    alt=\"Esperando captura...\"\n    style=\"\n        width: 350px;\n        border-radius: 8px;\n        border: 2px solid #444;\n        box-shadow: 0 4px 6px rgba(0,0,0,0.3);\n        display: block;\n        margin: 0 auto;\n    \"\n/>\n\n<div style=\"margin-top: 5px; font-size: 12px; color: #888; text-align: center;\">\n    ID Disp: {{msg.payload.device_id}}\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 470,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "func_prep_mongo_doc",
+        "type": "function",
+        "z": "tab_sentinel",
+        "name": "Prep Mongo Document",
+        "func": "// Recuperamos datos del contexto\nconst device = flow.get('current_device') || \"unknown\";\nconst method = flow.get('current_method') || \"unknown\";\n\n// msg.payload[0] es el comando MQTT (Open/Close)\n// msg.payload[2] es el Log HTML (Status)\n\n// Creamos un documento limpio para la BD\nmsg.payload = {\n    timestamp: new Date(),\n    device_id: device,\n    access_method: method,\n    status: msg.log_status, // \"GRANTED\" o \"DENIED_VISION\"\n    ai_explanation: msg.ai_text_raw, // Texto puro de ChatGPT\n    chart_value: msg.access_final ? 1 : 0\n};\n\n// Definimos la colección\nmsg.collection = \"access_logs\";\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1010,
+        "y": 260,
+        "wires": [
+            [
+                "mongo_save_log"
+            ]
+        ]
+    },
+    {
+        "id": "mongo_save_log",
+        "type": "mongodb out",
+        "z": "tab_sentinel",
+        "mongodb": "mongo_conn_iot",
+        "name": "Save to MongoDB",
+        "collection": "access_logs",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "store",
+        "x": 1250,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "inject_init_history",
+        "type": "inject",
+        "z": "tab_sentinel",
+        "name": "Iniciar/Refrescar",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 340,
+        "wires": [
+            [
+                "func_query_last_20"
+            ]
+        ]
+    },
+    {
+        "id": "func_query_last_20",
+        "type": "function",
+        "z": "tab_sentinel",
+        "name": "Query Last 20",
+        "func": "// Configuramos la búsqueda para traer los últimos 20 eventos\nmsg.collection = \"access_logs\";\nmsg.operation = \"find.toArray\";\n// Ordenar descendente (el más nuevo primero)\nmsg.sort = { timestamp: -1 };\nmsg.limit = 20;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 420,
+        "wires": [
+            [
+                "mongo_find_history"
+            ]
+        ]
+    },
+    {
+        "id": "mongo_find_history",
+        "type": "mongodb in",
+        "z": "tab_sentinel",
+        "mongodb": "mongo_conn_iot",
+        "name": "Get History",
+        "collection": "access_logs",
+        "operation": "find",
+        "x": 470,
+        "y": 420,
+        "wires": [
+            [
+                "func_format_replay"
+            ]
+        ]
+    },
+    {
+        "id": "func_format_replay",
+        "type": "function",
+        "z": "tab_sentinel",
+        "name": "Replay History",
+        "func": "// MongoDB nos da los datos del más nuevo al más viejo.\nconst logs = msg.payload; \n\nconst logList = [];    // Para el Log (enviaremos un Array)\nconst msgsChart = [];  // Para la Gráfica (enviaremos mensajes sueltos)\n\nlogs.forEach(doc => {\n    // --- 1. Preparar Log (HTML) ---\n    const ts = new Date(doc.timestamp);\n    const timeStr = ts.toLocaleTimeString();\n    const color = (doc.chart_value === 1) ? \"green\" : \"red\";\n    const status = doc.status || \"UNKNOWN\";\n    const reason = doc.ai_explanation || \"\";\n    \n    // HTML de la línea\n    const html = `<span style=\"color:${color}\"><b>[${timeStr}]</b> ${status}:</span> ${reason}`;\n    \n    // Lo agregamos a la lista\n    logList.push(html);\n\n    // --- 2. Preparar Gráfica ---\n    // La gráfica necesita mensajes individuales con timestamp\n    msgsChart.push({\n        topic: status, \n        payload: doc.chart_value, // 1 o 0\n        timestamp: ts.getTime()   // Importante para situarlo en el pasado\n    });\n});\n\n// Mensaje 1: Para el Log (va como payload Array)\nconst msgLog = { payload: logList };\n\n// Mensaje 2: Para la Gráfica (Node-RED enviará esto como una ráfaga de mensajes)\n// OJO: Invertimos el orden para la gráfica (Viejo -> Nuevo) para que se dibuje bien\nreturn [msgLog, msgsChart.reverse()];",
+        "outputs": 2,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 420,
+        "wires": [
+            [
+                "f1e948b53f0df415"
+            ],
+            [
+                "c2a2f91c2513f8da"
+            ]
+        ],
+        "outputLabels": [
+            "To Activity Log",
+            "To Chart"
+        ]
+    },
+    {
+        "id": "170cab5f1e2a1935",
+        "type": "debug",
+        "z": "tab_sentinel",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1060,
+        "y": 40,
+        "wires": []
+    }
+]

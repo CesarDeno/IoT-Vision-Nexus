@@ -13,6 +13,8 @@ services:
       environment:
          MONGO_INITDB_ROOT_USERNAME: iot_admin
          MONGO_INITDB_ROOT_PASSWORD: 940194
+      networks:
+         - iot_net
 
    # --- BROKER MQTT (Mosquitto) ---
    mosquitto:
@@ -26,6 +28,8 @@ services:
          - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
          - mosquitto_data:/mosquitto/data
          - mosquitto_log:/mosquitto/log
+      networks:
+         - iot_net
 
    # --- Node-RED ---
    node-red:
