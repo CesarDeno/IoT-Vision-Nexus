@@ -27,7 +27,39 @@ services:
          - mosquitto_data:/mosquitto/data
          - mosquitto_log:/mosquitto/log
 
+   # Node-RED: Orquestación y Dashboard
+   node-red:
+      image: nodered/node-red:latest
+      container_name: nodered_core
+      ports:
+         - "1880:1880" # UI y Editor
+      environment:
+         - TZ=America/Hermosillo
+      volumes:
+         - ./node_red_data:/data # Persistencia de flujos
+      networks:
+         - iot_net
+      depends_on:
+         - mosquitto # Espera al broker
+
+   # DeepStack: Visión por Computadora Local
+   deepstack:
+      image: deepquestai/deepstack:cpu
+      container_name: deepstack_vision
+      ports:
+         - "5000:5000"
+      environment:
+         - VISION-SCENE=True # Detección de escenas
+         - VISION-DETECTION=True # Detección de objetos
+         - VISION-FACE=True # Reconocimiento facial (Requerido para accesos)
+      networks:
+         - iot_net
+
 volumes:
    mongo_data:
    mosquitto_data:
    mosquitto_log:
+
+networks:
+   iot_net:
+      driver: bridge

@@ -1,59 +1,49 @@
-# Final Integrative Project: Cyber-Physical System and Digital Twin
+# IoT-Vision-Nexus: Cyber-Physical System & Digital Twin
 
-IoT middleware developed in **Python (FastAPI)** that connects a **physical prototype (ESP32)** with a **Digital Twin in Unity**, using **MQTT**  for real-time
-transmission and **MongoDB** for historical storage.
+A comprehensive IoT solution fusing real-time ESP32 telemetry, local Computer Vision (DeepStack), and a synchronized Unity Digital Twin, orchestrated via Node-RED with GenAI reporting.
 
-## 🚀 Installation and Execution Instructions
+## 🏗️ Tech Stack
 
-### 1. Python Environment Setup
+-  **Edge:** ESP32 (ESP-IDF + Digital Filtering)
+-  **Vision:** DeepStack (Local Face/Object Detection)
+-  **Logic:** Node-RED & MQTT flow orchestration
+-  **Digital Twin:** Unity (Real-time 3D Sync)
+-  **GenAI:** ChatGPT (Incident Reporting)
 
-```
+## 🚀 Installation & Execution
+
+### 1. Python Environment
+
+```bash
 python -m venv .venv
-.venv\Scripts\activate
+.venv\\Scripts\\activate
+pip install -r requirements.txt
 ```
 
 ### 2. Infrastructure (Docker)
 
-```
+Starts MQTT, MongoDB, Node-RED, and DeepStack.
+
+```bash
 docker-compose up -d
 ```
 
-### 3. Dependency Installation
+### 3. Middleware Execution
 
-```
-pip install -r requirements.txt
-```
+Fixes Windows socket loop issues.
 
-### 4.Middleware Execution
-
-```
+```bash
 cd src
 python run.py
 ```
 
-## 🧪 Simulation Tools (Testing)
+## 🔌 Services & Credentials
 
-### Hardware Simulator (Mock ESP32)
-
-```
-python mock/mock_esp32.py
-```
-
-### Web Viewer (Mock Unity)
-
-Open `mock/mock_unity.html`.
-
-## 🔑 Credentials and Ports
-
-| Service    | Host      | Port   | User      | Password   |
-| ---------- | --------- | ------ | --------- | ---------- |
-| MongoDB    | localhost | 27017  | iot_admin | 940194     |
-| MQTT (TCP) | localhost | 1883   | (Anónimo) | -          |
-| MQTT (WS)  | localhost | 9001   | (Anónimo) | -          |
-| API REST   | localhost | 8000   | -         | -          |
-
-MongoDB Compass URI:
-
-```
-mongodb://iot_admin:940194@localhost:27017/?authSource=admin
-```
+| Service        | URL/Host                | Port  | User        | Password |
+| :------------- | :---------------------- | :---- | :---------- | :------- |
+| **Node-RED**   | `http://localhost:1880` | 1880  | -           | -        |
+| **DeepStack**  | `http://localhost:5000` | 5000  | -           | -        |
+| **MQTT (TCP)** | `localhost`             | 1883  | (Anonymous) | -        |
+| **MQTT (WS)**  | `localhost`             | 9001  | (Anonymous) | -        |
+| **API REST**   | `http://localhost:8000` | 8000  | -           | -        |
+| **MongoDB**    | `localhost`             | 27017 | `iot_admin` | `940194` |
