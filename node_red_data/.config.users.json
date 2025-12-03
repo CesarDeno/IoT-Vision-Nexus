@@ -18,10 +18,11 @@
             },
             "dialog": {
                 "export": {
-                    "pretty": true,
+                    "pretty": false,
                     "json-view": true
                 }
             }
-        }
+        },
+        "menu-menu-item-sidebar": true
     }
 }
