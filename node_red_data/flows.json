@@ -1,12 +1,5 @@
 [
     {
-        "id": "tab_sentinel",
-        "type": "tab",
-        "label": "Sentinel Core",
-        "disabled": true,
-        "info": ""
-    },
-    {
         "id": "feab2e29b155e348",
         "type": "tab",
         "label": "Entrenamiento de Deepstack",
@@ -56,7 +49,7 @@
             "name": "theme-light",
             "lightTheme": {
                 "default": "#0094CE",
-                "baseColor": "#0094CE",
+                "baseColor": "#000000",
                 "baseFont": "Verdana,Verdana,Geneva,sans-serif",
                 "edited": false,
                 "reset": false
@@ -78,11 +71,11 @@
             "themeState": {
                 "base-color": {
                     "default": "#0094CE",
-                    "value": "#0094CE",
+                    "value": "#000000",
                     "edited": true
                 },
                 "page-titlebar-backgroundColor": {
-                    "value": "#0094CE",
+                    "value": "#000000",
                     "edited": false
                 },
                 "page-backgroundColor": {
@@ -90,11 +83,11 @@
                     "edited": false
                 },
                 "page-sidebar-backgroundColor": {
-                    "value": "#ffffff",
+                    "value": "#333333",
                     "edited": false
                 },
                 "group-textColor": {
-                    "value": "#1bbfff",
+                    "value": "#262626",
                     "edited": false
                 },
                 "group-borderColor": {
@@ -110,7 +103,7 @@
                     "edited": false
                 },
                 "widget-backgroundColor": {
-                    "value": "#0094ce",
+                    "value": "#000000",
                     "edited": false
                 },
                 "widget-borderColor": {
@@ -292,430 +285,6 @@
         "width": "10",
         "collapse": false,
         "className": ""
-    },
-    {
-        "id": "1c5decd3881ce31b",
-        "type": "mqtt in",
-        "z": "tab_sentinel",
-        "name": "Entrada: iot/telemetry",
-        "topic": "iot/telemetry",
-        "qos": "0",
-        "datatype": "json",
-        "broker": "broker_mosquitto",
-        "nl": false,
-        "rap": false,
-        "inputs": 0,
-        "x": 120,
-        "y": 60,
-        "wires": [
-            [
-                "ui_template_cam_feed",
-                "ae851720952148f8"
-            ]
-        ]
-    },
-    {
-        "id": "ae851720952148f8",
-        "type": "function",
-        "z": "tab_sentinel",
-        "name": "2. Decodificar Imagen & Prep",
-        "func": "// 1. Guardamos datos del contexto (Persistencia)\nflow.set('current_device', msg.payload.device_id);\nflow.set('current_method', msg.payload.access_method);\n\n// 2. Limpieza y Conversión\n// Aseguramos que sea un string limpio (sin headers data:image...)\nlet base64String = msg.payload.img;\nif (base64String.includes(\",\")) {\n    base64String = base64String.split(\",\")[1];\n}\n\n// Convertimos a Buffer Binario\nconst imgBuffer = Buffer.from(base64String, 'base64');\n\n// 3. CONSTRUCCIÓN DEL MULTIPART/FORM-DATA (El paso clave)\nconst boundary = \"----WebKitFormBoundary\" + Date.now();\n\n// Cabeceras del \"sobre\"\nmsg.headers = {\n    \"Content-Type\": \"multipart/form-data; boundary=\" + boundary\n};\n\n// Parte 1: Encabezado del archivo dentro del formulario\nconst partHeader = `--${boundary}\\r\\n` +\n                   `Content-Disposition: form-data; name=\"image\"; filename=\"capture.jpg\"\\r\\n` +\n                   `Content-Type: image/jpeg\\r\\n\\r\\n`;\n\n// Parte 2: Pie de página del formulario\nconst partFooter = `\\r\\n--${boundary}--`;\n\n// 4. Ensamblaje final\n// Unimos: Encabezado + Imagen Binaria + Pie\nmsg.payload = Buffer.concat([\n    Buffer.from(partHeader, 'utf8'),\n    imgBuffer,\n    Buffer.from(partFooter, 'utf8')\n]);\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 440,
-        "y": 120,
-        "wires": [
-            [
-                "d37bbea94c332873"
-            ]
-        ]
-    },
-    {
-        "id": "ui_template_cam_feed",
-        "type": "ui_template",
-        "z": "tab_sentinel",
-        "group": "1915cbc1c860ad50",
-        "name": "Live Camera Feed",
-        "order": 2,
-        "width": 10,
-        "height": 9,
-        "format": "<h3>📸 Último Intento</h3>\n\n<img\n    src=\"data:image/jpeg;base64,{{msg.payload.img}}\"\n    alt=\"Esperando captura...\"\n    style=\"\n        width: 350px;\n        border-radius: 8px;\n        border: 2px solid #444;\n        box-shadow: 0 4px 6px rgba(0,0,0,0.3);\n        display: block;\n        margin: 0 auto;\n    \"\n/>\n<div style=\"margin-top: 5px; font-size: 12px; color: #888; text-align: center;\">\n    ID Disp: {{msg.payload.device_id}}\n</div>\n",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "className": "",
-        "x": 410,
-        "y": 60,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "inject_init_history",
-        "type": "inject",
-        "z": "tab_sentinel",
-        "name": "Iniciar/Refrescar",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "0.5",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 140,
-        "y": 340,
-        "wires": [
-            [
-                "func_query_last_20"
-            ]
-        ]
-    },
-    {
-        "id": "func_query_last_20",
-        "type": "function",
-        "z": "tab_sentinel",
-        "name": "Query Last 20",
-        "func": "// Configuramos la búsqueda para traer los últimos 20 eventos\nmsg.collection = \"access_logs\";\nmsg.operation = \"find.toArray\";\n// Ordenar descendente (el más nuevo primero)\nmsg.sort = { timestamp: -1 };\nmsg.limit = 20;\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 280,
-        "y": 420,
-        "wires": [
-            [
-                "mongo_find_history"
-            ]
-        ]
-    },
-    {
-        "id": "mongo_find_history",
-        "type": "mongodb in",
-        "z": "tab_sentinel",
-        "mongodb": "mongo_conn_iot",
-        "name": "Get History",
-        "collection": "access_logs",
-        "operation": "find",
-        "x": 470,
-        "y": 420,
-        "wires": [
-            [
-                "func_format_replay"
-            ]
-        ]
-    },
-    {
-        "id": "d37bbea94c332873",
-        "type": "http request",
-        "z": "tab_sentinel",
-        "name": "POST DeepStack",
-        "method": "POST",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "http://deepstack_vision:5000/v1/vision/detection",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 690,
-        "y": 120,
-        "wires": [
-            [
-                "3ea843174f2f324c"
-            ]
-        ]
-    },
-    {
-        "id": "3ea843174f2f324c",
-        "type": "function",
-        "z": "tab_sentinel",
-        "name": "3. Lógica 2FA & Prompt",
-        "func": "const predictions = msg.payload.predictions || [];\n\n// 1. FILTRO DE SEGURIDAD MEJORADO\n// Subimos la confianza a 0.65 (65%) para ser más estrictos.\n// Verificamos que 'userid' EXISTA y no sea \"unknown\".\nconst recognizedFace = predictions.find(p => \n    p.confidence > 0.65 && \n    p.userid && // Asegura que la propiedad existe\n    p.userid !== \"unknown\"\n);\n\n// Buscamos si hay una cara desconocida (Intruso)\nconst unknownFace = predictions.find(p => \n    p.confidence > 0.65 && \n    p.userid === \"unknown\"\n);\n\n// Recuperar datos previos\nconst method = flow.get('current_method') || 'Desconocido';\n\nlet accessFinal = false;\nlet prompt = \"\";\nlet logStatus = \"\";\n\nif (recognizedFace) {\n    // CASO 1: Persona Autorizada ✅\n    accessFinal = true;\n    logStatus = \"GRANTED\";\n    const user = recognizedFace.userid; \n    prompt = `Genera un mensaje corto (max 15 palabras) con emojis saludando a ${user} y confirmando su acceso.`;\n\n} else if (unknownFace) {\n    // CASO 2: Persona Desconocida (Intruso) 🚨\n    accessFinal = false;\n    logStatus = \"DENIED_UNKNOWN\";\n    prompt = `Genera una alerta de seguridad (max 15 palabras). Rostro desconocido detectado en ${method}. Acceso denegado.`;\n\n} else {\n    // CASO 3: Detección Incierta o Vacía ⚠️\n    // Si la confianza es baja (<0.65) o no hay cara, cae aquí.\n    accessFinal = false;\n    logStatus = \"DENIED_LOW_CONFIDENCE\";\n    prompt = `Genera una advertencia técnica (max 15 palabras). Se intentó acceso por ${method} pero no se identificó un rostro claro.`;\n}\n\n// Guardar estado para el siguiente nodo\nmsg.access_final = accessFinal;\nmsg.log_status = logStatus;\n\n// Payload para OpenAI\nmsg.payload = {\n    \"model\": \"gpt-3.5-turbo\",\n    \"messages\": [\n        { \"role\": \"system\", \"content\": \"Eres un guardia de seguridad digital.\" },\n        { \"role\": \"user\", \"content\": prompt }\n    ],\n    \"temperature\": 0.7\n};\n\nmsg.headers = {\n    \"Content-Type\": \"application/json\",\n    \"Authorization\": \"Bearer \" + \"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\"\n};\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 930,
-        "y": 120,
-        "wires": [
-            [
-                "1e7ab3460e8533b9"
-            ]
-        ]
-    },
-    {
-        "id": "1e7ab3460e8533b9",
-        "type": "http request",
-        "z": "tab_sentinel",
-        "name": "ChatGPT Gen",
-        "method": "POST",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "https://api.openai.com/v1/chat/completions",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 1180,
-        "y": 120,
-        "wires": [
-            [
-                "5a76b3a2cae0890f"
-            ]
-        ]
-    },
-    {
-        "id": "5a76b3a2cae0890f",
-        "type": "function",
-        "z": "tab_sentinel",
-        "name": "4. Salidas y Dashboard",
-        "func": "// --- 1. PROCESAR RESPUESTA IA ---\nlet aiText = \"⚠️ Sin respuesta de IA\";\nif (msg.payload && msg.payload.choices && msg.payload.choices.length > 0) {\n    aiText = msg.payload.choices[0].message.content;\n} else if (msg.payload && msg.payload.error) {\n    aiText = \"Error IA: \" + msg.payload.error.message;\n}\n\nconst timestamp = new Date().toLocaleTimeString();\nconst rawStatus = msg.log_status || \"UNKNOWN\";\nconst isGranted = msg.access_final;\n\n// --- 2. TRADUCCIÓN Y ESTILOS ---\nlet displayStatus = rawStatus;\nlet borderColor = \"#9e9e9e\"; // Gris\nlet bgColor = \"rgba(158, 158, 158, 0.1)\"; \nlet icon = \"⚪\";\n\nif (isGranted) {\n    // Caso Verde\n    displayStatus = \"ACCESO PERMITIDO\";\n    borderColor = \"#4CAF50\"; \n    bgColor = \"rgba(76, 175, 80, 0.1)\"; \n    icon = \"✅\";\n} else {\n    // Casos Rojos (Traducidos)\n    borderColor = \"#F44336\"; \n    bgColor = \"rgba(244, 67, 54, 0.1)\"; \n    icon = \"🚨\";\n    \n    if (rawStatus.includes(\"UNKNOWN\")) displayStatus = \"INTRUSO DESCONOCIDO\";\n    else if (rawStatus.includes(\"NO_FACE\")) displayStatus = \"SIN ROSTRO DETECTADO\";\n    else displayStatus = \"ACCESO DENEGADO\";\n}\n\n// --- 3. NUEVO DISEÑO HTML ---\nconst logHtml = `\n<div style=\"\n    border-left: 5px solid ${borderColor};\n    background-color: ${bgColor};\n    margin-bottom: 15px;  /* Más separación entre elementos */\n    padding: 10px 12px;\n    border-radius: 4px;\n    border-bottom: 1px solid #ddd; /* Línea separadora sutil abajo */\n    font-family: 'Segoe UI', sans-serif;\n    box-shadow: 0 2px 5px rgba(0,0,0,0.05);\n\">\n    <div style=\"display:flex; align-items:center; margin-bottom:6px;\">\n        <span style=\"font-family:monospace; color:#555; font-size:12px; margin-right:10px; font-weight:bold;\">\n            [${timestamp}]\n        </span>\n        <span style=\"font-weight:bold; color:${borderColor}; font-size:12px; text-transform:uppercase;\">\n            ${icon} ${displayStatus}\n        </span>\n    </div>\n    <div style=\"font-size:13px; line-height:1.4; color:#333; padding-left:5px;\">\n        ${aiText}\n    </div>\n</div>`;\n\n// --- 4. SALIDAS ---\nconst mqttMsg = {\n    payload: { \"action\": isGranted ? \"OPEN\" : \"CLOSE\", \"reason\": aiText },\n    ai_text_raw: aiText,\n    log_status: rawStatus, // Guardamos el status técnico en BD\n    access_final: isGranted\n};\n\nconst uiTextMsg = { payload: aiText };\nconst uiLogMsg = { payload: logHtml };\n\nconst chartPieMsg = {\n    topic: isGranted ? \"Acceso Permitido\" : \"Acceso Denegado\",\n    payload: 1\n};\n\nconst chartLineMsg = {\n    topic: \"Actividad\",\n    payload: 1,\n    timestamp: new Date().getTime()\n};\n\nreturn [mqttMsg, uiTextMsg, uiLogMsg, chartPieMsg, chartLineMsg];",
-        "outputs": 4,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 690,
-        "y": 240,
-        "wires": [
-            [
-                "24f2b2b304e60550",
-                "func_prep_mongo_doc"
-            ],
-            [
-                "3bf7e46edc8ec8d4"
-            ],
-            [
-                "f1e948b53f0df415"
-            ],
-            [
-                "c2a2f91c2513f8da"
-            ]
-        ],
-        "outputLabels": [
-            "MQTT Command",
-            "Dashboard Text",
-            "Dashboard Log",
-            "Dashboard Chart"
-        ]
-    },
-    {
-        "id": "24f2b2b304e60550",
-        "type": "mqtt out",
-        "z": "tab_sentinel",
-        "name": "Salida: iot/commands",
-        "topic": "iot/commands",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "broker_mosquitto",
-        "x": 1260,
-        "y": 200,
-        "wires": []
-    },
-    {
-        "id": "3bf7e46edc8ec8d4",
-        "type": "ui_text",
-        "z": "tab_sentinel",
-        "group": "1915cbc1c860ad50",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": "",
-        "color": "#000000",
-        "x": 950,
-        "y": 300,
-        "wires": []
-    },
-    {
-        "id": "f1e948b53f0df415",
-        "type": "ui_template",
-        "z": "tab_sentinel",
-        "group": "98afc57e2ac6d5f6",
-        "name": "Activity Log",
-        "order": 1,
-        "width": 10,
-        "height": "10",
-        "format": "<div style=\"height: 100%; overflow-y: auto; padding-right: 5px;\">\n    <div ng-repeat=\"line in logs track by $index\" ng-bind-html=\"line\" class=\"log-entry-anim\">\n    </div>\n</div>\n\n<style>\n    /* Pequeña animación para que se sienta fluido al entrar un log nuevo */\n    .log-entry-anim {\n        animation: fadeIn 0.5s ease-in;\n    }\n\n    @keyframes fadeIn {\n        from {\n            opacity: 0;\n            transform: translateY(-10px);\n        }\n\n        to {\n            opacity: 1;\n            transform: translateY(0);\n        }\n    }\n</style>\n\n<script>\n    (function(scope) {\n        scope.logs = scope.logs || [];\n        scope.$watch('msg', function(msg) {\n            if (msg && msg.payload) {\n                if (Array.isArray(msg.payload)) {\n                    // Carga inicial (Historial)\n                    scope.logs = msg.payload; \n                } else {\n                    // Nuevo evento en vivo\n                    scope.logs.unshift(msg.payload); \n                    // Mantenemos solo los ultimos 50 para no alentar el navegador\n                    if (scope.logs.length > 50) scope.logs.pop();\n                }\n            }\n        });\n    })(scope);\n</script>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "className": "",
-        "x": 970,
-        "y": 380,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "c2a2f91c2513f8da",
-        "type": "ui_chart",
-        "z": "tab_sentinel",
-        "name": "",
-        "group": "1a0ece8aa888b84f",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "label": "Intentos de Acceso",
-        "chartType": "pie",
-        "legend": "true",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": "1",
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 990,
-        "y": 420,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "9c9da566b1f79273",
-        "type": "change",
-        "z": "tab_sentinel",
-        "name": "Set Denied",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "Acceso Denegado",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 610,
-        "y": 320,
-        "wires": [
-            [
-                "3bf7e46edc8ec8d4"
-            ]
-        ]
-    },
-    {
-        "id": "func_prep_mongo_doc",
-        "type": "function",
-        "z": "tab_sentinel",
-        "name": "Prep Mongo Document",
-        "func": "// Recuperamos datos del contexto\nconst device = flow.get('current_device') || \"unknown\";\nconst method = flow.get('current_method') || \"unknown\";\n\n// msg.payload[0] es el comando MQTT (Open/Close)\n// msg.payload[2] es el Log HTML (Status)\n\n// Creamos un documento limpio para la BD\nmsg.payload = {\n    timestamp: new Date(),\n    device_id: device,\n    access_method: method,\n    status: msg.log_status, // \"GRANTED\" o \"DENIED_VISION\"\n    ai_explanation: msg.ai_text_raw, // Texto puro de ChatGPT\n    chart_value: msg.access_final ? 1 : 0\n};\n\n// Definimos la colección\nmsg.collection = \"access_logs\";\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1010,
-        "y": 260,
-        "wires": [
-            [
-                "mongo_save_log"
-            ]
-        ]
-    },
-    {
-        "id": "mongo_save_log",
-        "type": "mongodb out",
-        "z": "tab_sentinel",
-        "mongodb": "mongo_conn_iot",
-        "name": "Save to MongoDB",
-        "collection": "access_logs",
-        "payonly": true,
-        "upsert": false,
-        "multi": false,
-        "operation": "store",
-        "x": 1250,
-        "y": 260,
-        "wires": []
-    },
-    {
-        "id": "func_format_replay",
-        "type": "function",
-        "z": "tab_sentinel",
-        "name": "Replay History",
-        "func": "// 1. PROTECCIÓN: Verificar si hay datos\nif (!msg.payload || !Array.isArray(msg.payload)) {\n    node.warn(\"MongoDB: No se encontraron logs o formato incorrecto.\");\n    return null;\n}\n\n// Ordenamos cronológicamente (Viejo -> Nuevo) para procesar\nconst logs = msg.payload.reverse(); \n\nconst logList = [];\nconst pieMsgs = [];\nconst lineMsgs = [];\n\nlogs.forEach(doc => {\n    // --- 2. RECUPERAR DATOS ---\n    const ts = new Date(doc.timestamp);\n    const timeStr = ts.toLocaleTimeString();\n    \n    // Status original y traducción\n    const rawStatus = doc.status || \"UNKNOWN\";\n    const text = doc.ai_response || \"Sin detalles\";\n    const isGranted = doc.authorized;\n\n    // --- 3. ESTILOS (Idéntico al panel en vivo) ---\n    let displayStatus = rawStatus;\n    let borderColor = \"#9e9e9e\";\n    let bgColor = \"rgba(158, 158, 158, 0.1)\"; \n    let icon = \"⚪\";\n\n    if (isGranted) {\n        displayStatus = \"ACCESO PERMITIDO\";\n        borderColor = \"#4CAF50\"; // Verde\n        bgColor = \"rgba(76, 175, 80, 0.1)\";\n        icon = \"✅\";\n    } else {\n        borderColor = \"#F44336\"; // Rojo\n        bgColor = \"rgba(244, 67, 54, 0.1)\";\n        icon = \"🚨\";\n        \n        // Traducción de errores\n        if (rawStatus.includes(\"UNKNOWN\")) displayStatus = \"INTRUSO DESCONOCIDO\";\n        else if (rawStatus.includes(\"NO_FACE\")) displayStatus = \"SIN ROSTRO DETECTADO\";\n        else displayStatus = \"ACCESO DENEGADO\";\n    }\n    \n    // --- 4. HTML TARJETA ---\n    const html = `\n    <div style=\"\n        border-left: 5px solid ${borderColor};\n        background-color: ${bgColor};\n        margin-bottom: 15px; \n        padding: 10px 12px;\n        border-radius: 4px;\n        border-bottom: 1px solid #ddd;\n        font-family: 'Segoe UI', sans-serif;\n        box-shadow: 0 2px 5px rgba(0,0,0,0.05);\n    \">\n        <div style=\"display:flex; align-items:center; margin-bottom:6px;\">\n            <span style=\"font-family:monospace; color:#555; font-size:12px; margin-right:10px; font-weight:bold;\">\n                [${timeStr}]\n            </span>\n            <span style=\"font-weight:bold; color:${borderColor}; font-size:12px; text-transform:uppercase;\">\n                ${icon} ${displayStatus}\n            </span>\n        </div>\n        <div style=\"font-size:13px; line-height:1.4; color:#333; padding-left:5px;\">\n            ${text}\n        </div>\n    </div>`;\n    \n    // Agregamos al inicio de la lista visual (Nuevo arriba)\n    logList.unshift(html); \n\n    // --- 5. DATOS GRÁFICOS ---\n    pieMsgs.push({\n        topic: isGranted ? \"Acceso Permitido\" : \"Acceso Denegado\",\n        payload: 1\n    });\n    lineMsgs.push({\n        topic: \"Actividad\",\n        payload: 1,\n        timestamp: ts.getTime()\n    });\n});\n\n// --- 6. ENVIAR A LAS 5 SALIDAS ---\n// Salida 3: Logs (Array completo)\nnode.send([null, null, { payload: logList }, null, null]);\n\n// Salidas 4 y 5: Gráficas (Punto por punto)\npieMsgs.forEach(m => node.send([null, null, null, m, null]));\nlineMsgs.forEach(m => node.send([null, null, null, null, m]));\n\nreturn null;",
-        "outputs": 2,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 660,
-        "y": 420,
-        "wires": [
-            [
-                "f1e948b53f0df415"
-            ],
-            [
-                "c2a2f91c2513f8da"
-            ]
-        ],
-        "outputLabels": [
-            "To Activity Log",
-            "To Chart"
-        ]
     },
     {
         "id": "ui_text_manual_id",

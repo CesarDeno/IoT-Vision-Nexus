@@ -56,7 +56,7 @@
             "name": "theme-light",
             "lightTheme": {
                 "default": "#0094CE",
-                "baseColor": "#0094CE",
+                "baseColor": "#000000",
                 "baseFont": "Verdana,Verdana,Geneva,sans-serif",
                 "edited": false,
                 "reset": false
@@ -78,11 +78,11 @@
             "themeState": {
                 "base-color": {
                     "default": "#0094CE",
-                    "value": "#0094CE",
+                    "value": "#000000",
                     "edited": true
                 },
                 "page-titlebar-backgroundColor": {
-                    "value": "#0094CE",
+                    "value": "#000000",
                     "edited": false
                 },
                 "page-backgroundColor": {
@@ -90,11 +90,11 @@
                     "edited": false
                 },
                 "page-sidebar-backgroundColor": {
-                    "value": "#ffffff",
+                    "value": "#333333",
                     "edited": false
                 },
                 "group-textColor": {
-                    "value": "#1bbfff",
+                    "value": "#262626",
                     "edited": false
                 },
                 "group-borderColor": {
@@ -110,7 +110,7 @@
                     "edited": false
                 },
                 "widget-backgroundColor": {
-                    "value": "#0094ce",
+                    "value": "#000000",
                     "edited": false
                 },
                 "widget-borderColor": {
@@ -274,11 +274,22 @@
     {
         "id": "1c76d03ba1249b93",
         "type": "ui_group",
-        "name": "Estadísticas",
+        "name": "",
         "tab": "a4e2ec0dd5ae815e",
         "order": 4,
         "disp": true,
         "width": 10,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f227f3fc0b299afb",
+        "type": "ui_group",
+        "name": "",
+        "tab": "a4e2ec0dd5ae815e",
+        "order": 6,
+        "disp": true,
+        "width": "10",
         "collapse": false,
         "className": ""
     },
@@ -1421,8 +1432,8 @@
         "type": "ui_chart",
         "z": "135b5f80cc1e3489",
         "name": "Línea de Tiempo",
-        "group": "1c76d03ba1249b93",
-        "order": 2,
+        "group": "f227f3fc0b299afb",
+        "order": 1,
         "width": 10,
         "height": 6,
         "label": "Tendencia de Actividad",
