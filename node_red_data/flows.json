@@ -15,6 +15,14 @@
         "info": ""
     },
     {
+        "id": "3c4c569c94aec86c",
+        "type": "tab",
+        "label": "Exportación",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "broker_mosquitto",
         "type": "mqtt-broker",
         "name": "Local Mosquitto",
@@ -51,7 +59,7 @@
                 "default": "#0094CE",
                 "baseColor": "#000000",
                 "baseFont": "Verdana,Verdana,Geneva,sans-serif",
-                "edited": false,
+                "edited": true,
                 "reset": false
             },
             "darkTheme": {
@@ -71,11 +79,11 @@
             "themeState": {
                 "base-color": {
                     "default": "#0094CE",
-                    "value": "#000000",
+                    "value": "#0094CE",
                     "edited": true
                 },
                 "page-titlebar-backgroundColor": {
-                    "value": "#000000",
+                    "value": "#0094CE",
                     "edited": false
                 },
                 "page-backgroundColor": {
@@ -83,11 +91,11 @@
                     "edited": false
                 },
                 "page-sidebar-backgroundColor": {
-                    "value": "#333333",
+                    "value": "#ffffff",
                     "edited": false
                 },
                 "group-textColor": {
-                    "value": "#262626",
+                    "value": "#1bbfff",
                     "edited": false
                 },
                 "group-borderColor": {
@@ -103,7 +111,7 @@
                     "edited": false
                 },
                 "widget-backgroundColor": {
-                    "value": "#000000",
+                    "value": "#0094ce",
                     "edited": false
                 },
                 "widget-borderColor": {
@@ -123,7 +131,7 @@
             }
         },
         "site": {
-            "name": "Node-RED Dashboard",
+            "name": "Sistema de Acceso",
             "hideToolbar": "false",
             "allowSwipe": "false",
             "lockMenu": "false",
@@ -142,13 +150,6 @@
         }
     },
     {
-        "id": "256eacd9a6aa3e78",
-        "type": "ui_tab",
-        "name": "Smart Access System",
-        "icon": "dashboard",
-        "order": 2
-    },
-    {
         "id": "mongo_conn_iot",
         "type": "mongodb",
         "hostname": "mongo_iot_db",
@@ -157,28 +158,6 @@
         "port": "27017",
         "db": "iot_project",
         "name": "MongoDB Docker"
-    },
-    {
-        "id": "1915cbc1c860ad50",
-        "type": "ui_group",
-        "name": "Monitoreo en Vivo",
-        "tab": "256eacd9a6aa3e78",
-        "order": 1,
-        "disp": true,
-        "width": "10",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "1a0ece8aa888b84f",
-        "type": "ui_group",
-        "name": "Estadísticas",
-        "tab": "256eacd9a6aa3e78",
-        "order": 2,
-        "disp": true,
-        "width": "10",
-        "collapse": false,
-        "className": ""
     },
     {
         "id": "tab_admin",
@@ -197,39 +176,6 @@
         "order": 1,
         "disp": true,
         "width": "8",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "98afc57e2ac6d5f6",
-        "type": "ui_group",
-        "name": "Logs",
-        "tab": "256eacd9a6aa3e78",
-        "order": 5,
-        "disp": true,
-        "width": "10",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "12a6b9e19c8f1035",
-        "type": "ui_group",
-        "name": "Monitor en Vivo",
-        "tab": "a4e2ec0dd5ae815e",
-        "order": 1,
-        "disp": true,
-        "width": "10",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "6f904e0925368796",
-        "type": "ui_group",
-        "name": "Bitácora de Eventos",
-        "tab": "a4e2ec0dd5ae815e",
-        "order": 3,
-        "disp": true,
-        "width": 10,
         "collapse": false,
         "className": ""
     },
@@ -256,18 +202,18 @@
     {
         "id": "2e6911f7d55fed26",
         "type": "ui_group",
-        "name": "",
+        "name": "Puntualidad",
         "tab": "a4e2ec0dd5ae815e",
-        "order": 5,
-        "disp": true,
-        "width": 10,
+        "order": 6,
+        "disp": false,
+        "width": 12,
         "collapse": false,
         "className": ""
     },
     {
         "id": "1c76d03ba1249b93",
         "type": "ui_group",
-        "name": "",
+        "name": "Primer Acceso del Día (Asistencia)",
         "tab": "a4e2ec0dd5ae815e",
         "order": 4,
         "disp": true,
@@ -276,15 +222,378 @@
         "className": ""
     },
     {
-        "id": "f227f3fc0b299afb",
+        "id": "12a6b9e19c8f1035",
         "type": "ui_group",
-        "name": "",
+        "name": "Monitor en Vivo",
         "tab": "a4e2ec0dd5ae815e",
-        "order": 6,
+        "order": 1,
         "disp": true,
         "width": "10",
         "collapse": false,
         "className": ""
+    },
+    {
+        "id": "6f904e0925368796",
+        "type": "ui_group",
+        "name": "Bitácora de Eventos",
+        "tab": "a4e2ec0dd5ae815e",
+        "order": 3,
+        "disp": true,
+        "width": 10,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "ac30b209d57de9f7",
+        "type": "ui_group",
+        "name": "Primer Acceso del Día (Asistencia)",
+        "tab": "a4e2ec0dd5ae815e",
+        "order": 5,
+        "disp": false,
+        "width": 4,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "tab_reports",
+        "type": "ui_tab",
+        "name": "Logs",
+        "icon": "fa-table",
+        "order": 3,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "group_table",
+        "type": "ui_group",
+        "name": "Resultados",
+        "tab": "tab_reports",
+        "order": 2,
+        "disp": false,
+        "width": 25,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "5045ab6426ef4a3c",
+        "type": "ui_group",
+        "name": "Acciones",
+        "tab": "tab_reports",
+        "order": 1,
+        "disp": false,
+        "width": 30,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "205280809e566cd3",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "5045ab6426ef4a3c",
+        "order": 1,
+        "width": 26,
+        "height": 1
+    },
+    {
+        "id": "964609c64bb0010a",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 1,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "2e8fae272ccb4f6e",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 3,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "7276ea03fb69d18b",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 4,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "30a9b8fcf85aaf07",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 5,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "0fba076fe03931cb",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 6,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "9568e5ed6992fe9e",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 7,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "789954a93d2717e1",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 8,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "31e863c6c9f45b79",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 9,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "fa216d9f66f00173",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 10,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "32b447d3d9af7340",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 11,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "88398149a85c232c",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 12,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "c54f73f0c56e99ed",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 13,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "46ddc964878d01a6",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 14,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "f6c5963cd37d52e0",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 15,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "5d5ff97b42294ea9",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 16,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "3e5a94c2323c79cf",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 17,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "fab3a8fae559954c",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 18,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "b7addda21f03a5f4",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 19,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "931606f81155ad9e",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 20,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "bcdb6565da6c3443",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 21,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "0bd20610606a29cc",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 22,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "fdc8dee7b7c9967d",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 23,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "f8c437a4c313e9d0",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 24,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "9f1de0c648b69c4f",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 25,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "7c1e06902e0b23e1",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 26,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "2be616a128cf8f94",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 27,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "5c5ae619e840164b",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 28,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "bce7d50a19b38efa",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 29,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "d079f7afedbe42fb",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 30,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "3b65e5829e94e2de",
+        "type": "ui_spacer",
+        "z": "3c4c569c94aec86c",
+        "name": "spacer",
+        "group": "group_table",
+        "order": 31,
+        "width": 2,
+        "height": 1
     },
     {
         "id": "ui_text_manual_id",
@@ -455,7 +764,8 @@
         "wires": [
             [
                 "7ca6e31123b23f48",
-                "7fee0535d5723271"
+                "727a44ca895e0ad5",
+                "e411054f9004eca8"
             ]
         ]
     },
@@ -468,14 +778,14 @@
         "order": 1,
         "width": 10,
         "height": 9,
-        "format": "<div style=\"text-align: center;\">\n    <img \n        src=\"data:image/jpeg;base64,{{msg.payload.img}}\" \n        width=\"300px\"\n    />\n    <p>\n        ID Disp: {{msg.payload.device_id}} | <b>{{formattedTime}}</b>\n    </p>\n</div>\n\n<script>\n    (function(scope) {\n        scope.$watch('msg', function(msg) {\n            if (msg && msg.payload && msg.payload.timestamp) {\n                try {\n                    var date = new Date(msg.payload.timestamp);\n                    scope.formattedTime = date.toLocaleString('es-MX'); \n                } catch (e) {\n                    scope.formattedTime = msg.payload.timestamp;\n                }\n            } else {\n                scope.formattedTime = \"--/--/---- --:--\";\n            }\n        });\n    })(scope);\n</script>",
+        "format": "<div style=\"text-align: center;\">\n    <img\n        src=\"data:image/jpeg;base64,{{msg.payload.img}}\"\n        width=\"300px\"\n    />\n    <p>\n        ID Disp: {{msg.payload.device_id}} | <b>{{formattedTime}}</b>\n    </p>\n</div>\n\n<script>\n    (function(scope) {\n        scope.$watch('msg', function(msg) {\n            // Validamos que exista msg y payload\n            if (msg && msg.payload) {\n                try {\n                    // LOGICA DE FECHA:\n                    // Si msg.payload.timestamp existe, úsalo. \n                    // Si es null/undefined, usa new Date() (Fecha actual)\n                    var rawDate = msg.payload.timestamp || new Date();\n                    \n                    // Convertir a objeto Date y formatear\n                    var dateObj = new Date(rawDate);\n                    scope.formattedTime = dateObj.toLocaleString('es-MX'); \n                } catch (e) {\n                    scope.formattedTime = \"Hora desconocida\";\n                }\n            }\n        });\n    })(scope);\n</script>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 320,
-        "y": 40,
+        "x": 380,
+        "y": 60,
         "wires": [
             []
         ]
@@ -485,7 +795,7 @@
         "type": "function",
         "z": "135b5f80cc1e3489",
         "name": "2. Decodificar Imagen",
-        "func": "// 1. Guardar contexto\nflow.set('current_device', msg.payload.device_id);\nflow.set('current_method', msg.payload.access_method);\n\n// 2. Limpieza de Base64 (Robusta)\nlet base64String = msg.payload.img;\n\n// Si viene con prefijo data:image..., lo quitamos\nif (base64String.includes(\"base64,\")) {\n    base64String = base64String.split(\"base64,\")[1];\n}\n\nconst imgBuffer = Buffer.from(base64String, 'base64');\n\n// 3. CONSTRUCCIÓN MULTIPART (Estricta)\nconst boundary = \"--------------------------\" + Date.now().toString(16);\n\nmsg.headers = {\n    \"Content-Type\": \"multipart/form-data; boundary=\" + boundary\n};\n\n// Nota: Los saltos de línea \\r\\n son CRÍTICOS\nconst partHeader = `--${boundary}\\r\\n` +\n                   `Content-Disposition: form-data; name=\"image\"; filename=\"capture.jpg\"\\r\\n` +\n                   `Content-Type: image/jpeg\\r\\n` +\n                   `\\r\\n`; // Línea vacía antes del contenido binario\n\nconst partFooter = `\\r\\n--${boundary}--`;\n\n// 4. Ensamblaje\nmsg.payload = Buffer.concat([\n    Buffer.from(partHeader, 'utf8'),\n    imgBuffer,\n    Buffer.from(partFooter, 'utf8')\n]);\n\nreturn msg;",
+        "func": "if (!msg.payload.img) return \n\n// 1. Guardar contexto\nflow.set('current_device', msg.payload.device_id);\nflow.set('current_method', msg.payload.access_method);\n\n// 2. Limpieza de Base64 (Robusta)\nlet base64String = msg.payload.img;\n\n// Si viene con prefijo data:image..., lo quitamos\nif (base64String.includes(\"base64,\")) {\n    base64String = base64String.split(\"base64,\")[1];\n}\n\nconst imgBuffer = Buffer.from(base64String, 'base64');\n\n// 3. CONSTRUCCIÓN MULTIPART (Estricta)\nconst boundary = \"--------------------------\" + Date.now().toString(16);\n\nmsg.headers = {\n    \"Content-Type\": \"multipart/form-data; boundary=\" + boundary\n};\n\n// Nota: Los saltos de línea \\r\\n son CRÍTICOS\nconst partHeader = `--${boundary}\\r\\n` +\n                   `Content-Disposition: form-data; name=\"image\"; filename=\"capture.jpg\"\\r\\n` +\n                   `Content-Type: image/jpeg\\r\\n` +\n                   `\\r\\n`; // Línea vacía antes del contenido binario\n\nconst partFooter = `\\r\\n--${boundary}--`;\n\n// 4. Ensamblaje\nmsg.payload = Buffer.concat([\n    Buffer.from(partHeader, 'utf8'),\n    imgBuffer,\n    Buffer.from(partFooter, 'utf8')\n]);\n\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -529,7 +839,7 @@
         "type": "function",
         "z": "135b5f80cc1e3489",
         "name": "3. Lógica Seguridad",
-        "func": "const predictions = msg.payload.predictions || [];\n\n// CONFIGURACIÓN DE UMBRALES\nconst THRESHOLD_AUTH = 0.65; // Exigente para abrir la puerta\n\n// 1. BUSCAR AUTORIZADO (Solo entra si la confianza es alta y el nombre existe)\nconst authorizedFace = predictions.find(p => \n    p.confidence > THRESHOLD_AUTH && \n    p.userid && \n    p.userid !== \"unknown\"\n);\n\n// 2. BUSCAR CUALQUIER CARA (INTRUSO)\n// Si el array tiene elementos, ES que hay una cara, aunque la confianza sea 0.\nconst isIntruder = predictions.length > 0 && !authorizedFace;\n\n// --- LÓGICA DE DECISIÓN ---\nlet accessFinal = false;\nlet logStatus = \"\";\nlet prompt = \"\";\nlet username = \"Desconocido\";\n\nif (authorizedFace) {\n    // CASO 1: Acceso Permitido ✅\n    accessFinal = true;\n    logStatus = \"GRANTED\";\n    username = authorizedFace.userid;\n    prompt = `Genera un mensaje muy breve (10 palabras) con emojis alegre confirmando acceso a ${username}.`;\n\n} else if (isIntruder) {\n    // CASO 2: Hay datos en el array, pero no pasó el filtro de autorizado 🚨\n    accessFinal = false;\n    logStatus = \"DENIED_UNKNOWN\"; \n    prompt = `Genera una alerta de seguridad seria (10 palabras). Se detectó un rostro no autorizado intentando entrar. Acceso denegado.`;\n\n} else {\n    // CASO 3: El array está totalmente vacío (DeepStack no vio nada) ⚠️\n    accessFinal = false;\n    logStatus = \"DENIED_NO_FACE\";\n    prompt = `Informa brevemente (10 palabras) que la cámara no logró captar ningún rostro humano visible.`;\n}\n\n// --- SALIDAS ---\nmsg.access_final = accessFinal;\nmsg.log_status = logStatus;\nmsg.username = username;\n\n// Payload para ChatGPT\nmsg.payload = {\n    \"model\": \"gpt-3.5-turbo\",\n    \"messages\": [\n        { \"role\": \"system\", \"content\": \"Eres Sentinel, un sistema de seguridad física.\" },\n        { \"role\": \"user\", \"content\": prompt }\n    ],\n    \"temperature\": 0.7\n};\n\nmsg.headers = {\n    \"Content-Type\": \"application/json\",\n    // Verifica que tu API Key siga aquí\n    \"Authorization\": \"Bearer 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\"\n};\n\nreturn msg;",
+        "func": "const predictions = msg.payload.predictions || [];\n\n// CONFIGURACIÓN DE UMBRALES\nconst THRESHOLD_AUTH = 0.65; // Exigente para abrir la puerta\n\n// 1. BUSCAR AUTORIZADO (Solo entra si la confianza es alta y el nombre existe)\nconst authorizedFace = predictions.find(p => \n    p.confidence > THRESHOLD_AUTH && \n    p.userid && \n    p.userid !== \"unknown\"\n);\n\n// 2. BUSCAR CUALQUIER CARA (INTRUSO)\nconst isIntruder = predictions.length > 0 && !authorizedFace;\n\n// --- LÓGICA DE DECISIÓN ---\nlet accessFinal = false;\nlet logStatus = \"\";\nlet prompt = \"\";\nlet username = \"Desconocido\";\n\nif (authorizedFace) {\n    // CASO 1: Acceso Permitido ✅\n    accessFinal = true;\n    logStatus = \"GRANTED\";\n    username = authorizedFace.userid;\n    prompt = `Genera un mensaje muy breve (10 palabras) con emojis alegre confirmando la llegada a la oficina de ${username}.`;\n\n} else if (isIntruder) {\n    // CASO 2: Hay datos en el array, pero no pasó el filtro de autorizado 🚨\n    accessFinal = false;\n    logStatus = \"DENIED_UNKNOWN\"; \n    prompt = `Genera una alerta de seguridad seria (10 palabras). Se detectó un rostro no autorizado intentando entrar al edificio. Acceso denegado.`;\n\n} else {\n    // CASO 3: El array está totalmente vacío (DeepStack no vio nada) ⚠️\n    accessFinal = false;\n    logStatus = \"DENIED_NO_FACE\";\n    prompt = `Informa brevemente (10 palabras) que la cámara no logró captar ningún rostro humano visible.`;\n}\n\n// --- SALIDAS ---\nmsg.access_final = accessFinal;\nmsg.log_status = logStatus;\nmsg.username = username;\n\n// Payload para ChatGPT\nmsg.payload = {\n    \"model\": \"gpt-3.5-turbo\",\n    \"messages\": [\n        { \"role\": \"system\", \"content\": \"Eres un sistema de seguridad física para control de accesos dentro de una oficina.\" },\n        { \"role\": \"user\", \"content\": prompt }\n    ],\n    \"temperature\": 0.7\n};\n\nmsg.headers = {\n    \"Content-Type\": \"application/json\",\n    \"Authorization\": \"Bearer ---\" //removed key\n};\n\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -560,8 +870,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 1000,
-        "y": 120,
+        "x": 1040,
+        "y": 140,
         "wires": [
             [
                 "e59cd87bcb8c1412"
@@ -573,7 +883,7 @@
         "type": "function",
         "z": "135b5f80cc1e3489",
         "name": "4. Formatear salida",
-        "func": "let aiText = \"⚠️ Sin respuesta de IA\";\nif (msg.payload && msg.payload.choices) {\n    aiText = msg.payload.choices[0].message.content;\n} else if (msg.payload && msg.payload.error) {\n    aiText = \"Error IA: \" + msg.payload.error.message;\n}\n\nconst timestamp = new Date().toLocaleTimeString();\nconst rawStatus = msg.log_status || \"UNKNOWN\";\nconst isGranted = msg.access_final;\nconst user = msg.username || \"-\";\n\n// --- TRADUCCIÓN LOGS ---\nlet displayStatus = rawStatus;\nif (isGranted) {\n    displayStatus = \"ACCESO PERMITIDO\";\n} else {\n    if (rawStatus.includes(\"UNKNOWN\")) displayStatus = \"DESCONOCIDO\";\n    else if (rawStatus.includes(\"NO_FACE\")) displayStatus = \"SIN ROSTRO DETECTADO\";\n    else displayStatus = \"ACCESO DENEGADO\";\n}\n\n// --- 1. HTML LOG COMPLETO ---\nconst logHtml = `\n<div>\n    [${timestamp}] <b>${displayStatus}:</b> ${aiText}\n</div>\n<hr>`;\n\n// --- 2. HTML ASISTENCIA (SOLO SI ES GRANTED) ---\nlet attendanceHtml = null;\nif (isGranted) {\n    attendanceHtml = `\n    <div>\n        [${timestamp}] <b>${user}</b> ingresó correctamente. ✅\n    </div>\n    <hr>`;\n}\n\n// --- MENSAJES ---\nconst mqttMsg = {\n    payload: { \"action\": isGranted ? \"OPEN\" : \"CLOSE\", \"reason\": aiText },\n    ai_text_raw: aiText,\n    log_status: rawStatus,\n    access_final: isGranted,\n    username_log: user\n};\n\nconst uiStatusMsg = {\n    payload: `<h2>${displayStatus}</h2><p>${aiText}</p>`\n};\n\nconst uiLogMsg = { payload: logHtml };\nconst uiAttendanceMsg = attendanceHtml ? { payload: attendanceHtml } : null;\n\n// Outputs: [MQTT, UI Status, UI Log, UI Attendance]\nreturn [mqttMsg, uiStatusMsg, uiLogMsg, uiAttendanceMsg];",
+        "func": "// --- 1. RECUPERAR DATOS DEL CONTEXTO ---\nconst timestamp = new Date().toLocaleTimeString();\nconst rawStatus = msg.log_status || \"UNKNOWN\";\nconst isGranted = msg.access_final;\nconst user = msg.username || \"Desconocido\";\n\n// --- 2. DEFINIR MENSAJE POR DEFECTO (FALLBACK) ---\n// Este mensaje se usará si la IA falla o no responde.\nlet aiText = \"\";\n\nif (isGranted) {\n    aiText = `✅ Acceso autorizado correctamente a ${user}. Bienvenido.`;\n} else {\n    // Personalizamos el rechazo por defecto según la causa técnica\n    if (rawStatus.includes(\"UNKNOWN\")) {\n        aiText = \"🚨 Alerta de seguridad: Rostro no autorizado detectado.\";\n    } else if (rawStatus.includes(\"NO_FACE\")) {\n        aiText = \"⚠️ No se detectó ningún rostro visible en la cámara.\";\n    } else {\n        aiText = \"⛔ Acceso denegado por el sistema de seguridad.\";\n    }\n}\n\n// --- 3. INTENTAR OBTENER RESPUESTA DE IA ---\n// Si la API respondió bien, sobrescribimos el mensaje por defecto con el de ChatGPT\nif (msg.payload && msg.payload.choices && msg.payload.choices.length > 0) {\n    aiText = msg.payload.choices[0].message.content;\n}\n\n// --- 4. TRADUCCIÓN DE STATUS PARA UI ---\nlet displayStatus = rawStatus;\nif (isGranted) {\n    displayStatus = \"ACCESO PERMITIDO\";\n} else {\n    if (rawStatus.includes(\"UNKNOWN\")) displayStatus = \"INTRUSO DESCONOCIDO\";\n    else if (rawStatus.includes(\"NO_FACE\")) displayStatus = \"SIN ROSTRO DETECTADO\";\n    else displayStatus = \"ACCESO DENEGADO\";\n}\n\n// --- 5. HTML LOG COMPLETO ---\nconst logHtml = `\n<div>\n    [${timestamp}] <b>${displayStatus}:</b> ${aiText}\n</div>\n<hr>`;\n\n// --- 6. HTML ASISTENCIA (SOLO SI ES GRANTED) ---\nlet attendanceHtml = null;\nif (isGranted) {\n    attendanceHtml = `\n    <div>\n        [${timestamp}] <b>${user}</b> ingresó correctamente. ✅\n    </div>\n    <hr>`;\n}\n\n// --- 7. PREPARAR SALIDAS ---\nconst mqttMsg = {\n    payload: { \"action\": isGranted ? \"open\" : \"close\", \"reason\": aiText },\n    ai_text_raw: aiText,\n    log_status: rawStatus,\n    access_final: isGranted,\n    username_log: user\n};\n\nconst uiStatusMsg = {\n    payload: `<h2>${displayStatus}</h2><p>${aiText}</p>`\n};\n\nconst uiLogMsg = { payload: logHtml };\nconst uiAttendanceMsg = attendanceHtml ? { payload: attendanceHtml } : null;\n\n// Outputs: [MQTT, UI Status, UI Log, UI Attendance]\nreturn [mqttMsg, uiStatusMsg, uiLogMsg, uiAttendanceMsg];",
         "outputs": 4,
         "timeout": "",
         "noerr": 0,
@@ -613,7 +923,7 @@
         "expiry": "",
         "broker": "broker_mosquitto",
         "x": 930,
-        "y": 240,
+        "y": 280,
         "wires": []
     },
     {
@@ -632,7 +942,7 @@
         "templateScope": "local",
         "className": "",
         "x": 920,
-        "y": 300,
+        "y": 340,
         "wires": [
             []
         ]
@@ -653,7 +963,7 @@
         "templateScope": "local",
         "className": "",
         "x": 930,
-        "y": 340,
+        "y": 380,
         "wires": [
             []
         ]
@@ -671,7 +981,7 @@
         "finalize": "",
         "libs": [],
         "x": 930,
-        "y": 200,
+        "y": 240,
         "wires": [
             [
                 "da4829ceab45f4a0"
@@ -690,7 +1000,7 @@
         "multi": false,
         "operation": "store",
         "x": 1110,
-        "y": 200,
+        "y": 240,
         "wires": []
     },
     {
@@ -709,7 +1019,7 @@
         "templateScope": "local",
         "className": "",
         "x": 930,
-        "y": 380,
+        "y": 420,
         "wires": [
             []
         ]
@@ -744,7 +1054,7 @@
         "type": "function",
         "z": "135b5f80cc1e3489",
         "name": "Query: Últimos 100",
-        "func": "// Configuramos la consulta\nmsg.collection = \"access_logs\";\nmsg.operation = \"find.toArray\";\n\n// Ordenar por fecha descendente (lo más nuevo primero)\nmsg.sort = { timestamp: -1 };\n\n// Límite de registros para no saturar la pantalla\nmsg.limit = 100;\n\nreturn msg;",
+        "func": "// Configuramos la consulta\nmsg.collection = \"access_logs\";\nmsg.operation = \"find.toArray\";\n\n// Ordenar por fecha descendente (lo más nuevo primero)\nmsg.sort = { timestamp: -1 };\n\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -803,121 +1113,99 @@
         ]
     },
     {
-        "id": "e04fc7d0e44d8b39",
-        "type": "catch",
-        "z": "135b5f80cc1e3489",
-        "name": "",
-        "scope": null,
-        "uncaught": false,
-        "x": 740,
-        "y": 60,
-        "wires": [
-            [
-                "6b3f8a05cef25aaf"
-            ]
-        ]
-    },
-    {
-        "id": "inject_load_stats",
+        "id": "67f540797a8244be",
         "type": "inject",
         "z": "135b5f80cc1e3489",
-        "name": "Actualizar Gráficas",
+        "name": "Actualizar Métricas",
         "props": [
             {
                 "p": "payload"
             }
         ],
-        "repeat": "1",
+        "repeat": "60",
         "crontab": "",
         "once": true,
         "onceDelay": "2",
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 220,
-        "y": 580,
+        "x": 180,
+        "y": 540,
         "wires": [
             [
-                "func_query_all_stats"
+                "8b8e8a5bb9dca16c"
             ]
         ]
     },
     {
-        "id": "func_query_all_stats",
+        "id": "8b8e8a5bb9dca16c",
         "type": "function",
         "z": "135b5f80cc1e3489",
-        "name": "Query: Todo el Historial",
-        "func": "msg.collection = \"access_logs\";\nmsg.operation = \"find.toArray\";\n// Traemos suficientes datos para que las estadísticas tengan sentido\nmsg.limit = 500; \nmsg.sort = { timestamp: -1 };\nreturn msg;",
+        "name": "Query: Accesos de Hoy",
+        "func": "// 1. Obtener inicio del día actual (00:00:00)\nconst startOfDay = new Date();\nstartOfDay.setHours(0, 0, 0, 0);\n\nmsg.collection = \"access_logs\";\nmsg.operation = \"find.toArray\";\n\n// 2. Filtro: Fecha >= Hoy Y Accesso = TRUE\nmsg.query = {\n    timestamp: { $gte: startOfDay },\n    authorized: true\n};\n\n// Ordenamos cronológicamente (el primero es la llegada)\nmsg.sort = { timestamp: 1 };\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 450,
-        "y": 580,
+        "x": 410,
+        "y": 540,
         "wires": [
             [
-                "mongo_get_stats"
+                "0898d6425a6e7d7f"
             ]
         ]
     },
     {
-        "id": "mongo_get_stats",
+        "id": "0898d6425a6e7d7f",
         "type": "mongodb in",
         "z": "135b5f80cc1e3489",
         "mongodb": "mongo_conn_iot",
         "name": "Leer MongoDB",
         "collection": "access_logs",
         "operation": "find",
-        "x": 680,
-        "y": 580,
+        "x": 630,
+        "y": 540,
         "wires": [
             [
-                "func_calc_metrics"
+                "afd1275f2fea7931"
             ]
         ]
     },
     {
-        "id": "func_calc_metrics",
+        "id": "afd1275f2fea7931",
         "type": "function",
         "z": "135b5f80cc1e3489",
-        "name": "Procesar Métricas",
-        "func": "const logs = msg.payload || [];\n\n// --- 1. DATOS: TASA DE ÉXITO (PIE CHART) ---\nlet grantedCount = 0;\nlet deniedCount = 0;\n\n// --- 2. DATOS: TOP USUARIOS (BAR CHART) ---\nconst userCounts = {};\n\n// --- 3. DATOS: ACTIVIDAD (LINE CHART) ---\nconst activityTimeline = {}; \n\nlogs.forEach(doc => {\n    // A. Conteo Global\n    if (doc.authorized) grantedCount++;\n    else deniedCount++;\n\n    // B. Conteo Usuarios\n    const user = doc.username || \"Desconocido\";\n    if (user !== \"Desconocido\" && user !== \"-\") {\n        userCounts[user] = (userCounts[user] || 0) + 1;\n    }\n\n    // C. Línea de Tiempo (Agrupado por hora)\n    // Truco: \"Set minutes to 0\" agrupa todo lo que pasó en la hora 9:00, 9:15, 9:59 en \"9:00\"\n    const timeKey = new Date(doc.timestamp).setMinutes(0, 0, 0); \n    activityTimeline[timeKey] = (activityTimeline[timeKey] || 0) + 1;\n});\n\n// --- GENERAR MENSAJES PARA UI ---\n\n// 1. Mensajes Dona (Se envían como array de objetos)\n// El nodo Chart limpia y redibuja cuando recibe un array nuevo\nconst pieData = [\n    { series: \"Accesos\", data: [[grantedCount]], labels: [\"Permitido\"] },\n    { series: \"Accesos\", data: [[deniedCount]], labels: [\"Denegado\"] }\n];\n// Para Pie Chart de Node-RED Dashboard es mejor enviar puntos sueltos con 'topic'\nconst pieMsgs = [\n    { topic: \"Acceso Permitido\", payload: grantedCount },\n    { topic: \"Acceso Denegado\", payload: deniedCount }\n];\n\n// 2. Mensajes Barras (Top Usuarios)\nconst barMsgs = Object.keys(userCounts).map(user => {\n    return { topic: user, payload: userCounts[user] };\n});\n\n// 3. Mensajes Línea (Actividad)\n// Convertimos timeline a array ordenado por tiempo\nconst lineMsgs = Object.keys(activityTimeline).sort().map(ts => {\n    return {\n        topic: \"Actividad\",\n        payload: activityTimeline[ts],\n        timestamp: parseInt(ts)\n    };\n});\n\n// --- ENVIAR SALIDAS (3 Cables) ---\n\n// Salida 1: Dona\nnode.send([pieMsgs, null, null]);\n\n// Salida 2: Barras\nnode.send([null, barMsgs, null]);\n\n// Salida 3: Línea\nnode.send([null, null, lineMsgs]);\n\nreturn null;",
+        "name": "Calcular Asistencia",
+        "func": "const logs = msg.payload || [];\n\n// Objeto para guardar SOLO el primer acceso de cada usuario\nconst firstAccessMap = {};\n\n// 1. Encontrar el primer acceso de cada uno\nlogs.forEach(doc => {\n    const user = doc.username || \"Desconocido\";\n    if (user === \"Desconocido\" || user === \"-\") return;\n\n    // Si el usuario ya está en el mapa, ignoramos (porque ya tenemos su primer acceso)\n    // Si no está, lo guardamos.\n    if (!firstAccessMap[user]) {\n        firstAccessMap[user] = new Date(doc.timestamp);\n    }\n});\n\n// --- PREPARAR GRÁFICA 1: HORA DE LLEGADA (BARRAS) ---\n// Convertimos la hora de llegada a un número decimal (Ej: 8.5 para las 8:30)\nconst arrivalData = [];\nObject.keys(firstAccessMap).forEach(user => {\n    const time = firstAccessMap[user];\n    const hourDecimal = time.getHours() + (time.getMinutes() / 60);\n    \n    // Guardamos: { topic: \"Juan\", payload: 8.5 }\n    arrivalData.push({\n        topic: user,\n        payload: parseFloat(hourDecimal.toFixed(2))\n    });\n});\n\n// --- PREPARAR GRÁFICA 2: PUNTUALIDAD (DONA) ---\n// Definimos hora límite (Ej: 8:00 AM)\nconst LATE_THRESHOLD = 8.0;\nlet onTime = 0;\nlet late = 0;\n\narrivalData.forEach(item => {\n    if (item.payload <= LATE_THRESHOLD) onTime++;\n    else late++;\n});\n\nconst punctualityData = [\n    { topic: \"A Tiempo (< 8:00)\", payload: onTime },\n    { topic: \"Retardo (> 8:00)\", payload: late }\n];\n\n// --- PREPARAR TABLA RESUMEN (HTML) ---\nlet tableRows = \"\";\nObject.keys(firstAccessMap).forEach(user => {\n    const timeStr = firstAccessMap[user].toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});\n    tableRows += `<tr><td style='padding:5px;'>${user}</td><td style='padding:5px; text-align:right;'><b>${timeStr}</b></td></tr>`;\n});\nconst tableHtml = `<table style='width:100%; border-collapse:collapse;'>${tableRows}</table>`;\n\n// ENVIAR SALIDAS\n// 1. Gráfica Barras (Llegadas)\n// 2. Gráfica Dona (Puntualidad)\n// 3. Tabla HTML (Lista simple)\nnode.send([null, null, { payload: tableHtml }]); // Tabla directo\n\n// Gráficas (Punto por punto para chart node)\nnode.send([arrivalData, null, null]);\nnode.send([null, punctualityData, null]);\n\nreturn null;",
         "outputs": 3,
         "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 890,
-        "y": 580,
+        "x": 850,
+        "y": 540,
         "wires": [
+            [],
             [
-                "chart_pie_stats"
+                "d4eb9df6c2cb2ad1"
             ],
             [
-                "chart_bar_users"
-            ],
-            [
-                "chart_line_timeline"
+                "7989b888c7f75a0d"
             ]
-        ],
-        "outputLabels": [
-            "Pie Chart",
-            "Bar Chart",
-            "Line Chart"
         ]
     },
     {
-        "id": "chart_pie_stats",
+        "id": "d4eb9df6c2cb2ad1",
         "type": "ui_chart",
         "z": "135b5f80cc1e3489",
-        "name": "Tasa de Éxito",
+        "name": "Puntualidad",
         "group": "2e6911f7d55fed26",
         "order": 1,
-        "width": 0,
-        "height": 0,
-        "label": "Seguridad Global",
+        "width": 12,
+        "height": 6,
+        "label": "Puntualidad (Límite 8:00 AM)",
         "chartType": "pie",
         "legend": "true",
         "xformat": "HH:mm:ss",
@@ -939,103 +1227,355 @@
             "#2ca02c",
             "#98df8a",
             "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
+            "#000000",
+            "#000000",
+            "#000000"
         ],
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 1120,
+        "x": 1070,
         "y": 520,
         "wires": [
             []
         ]
     },
     {
-        "id": "chart_bar_users",
-        "type": "ui_chart",
+        "id": "7989b888c7f75a0d",
+        "type": "ui_template",
         "z": "135b5f80cc1e3489",
-        "name": "Top Usuarios",
-        "group": "1c76d03ba1249b93",
+        "group": "ac30b209d57de9f7",
+        "name": "Tabla Resumen",
         "order": 1,
-        "width": 10,
+        "width": 4,
         "height": 6,
-        "label": "Accesos por Usuario",
-        "chartType": "bar",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "0",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": true,
-        "useUTC": false,
-        "colors": [
-            "#2196f3",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
+        "format": "<h3>Lista del Día</h3>\n<div ng-bind-html=\"msg.payload\" style=\"overflow-y:auto; height:80%;\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
         "className": "",
-        "x": 1110,
+        "x": 1060,
         "y": 560,
         "wires": [
             []
         ]
     },
     {
-        "id": "chart_line_timeline",
-        "type": "ui_chart",
+        "id": "28eca9fbbb8c6d2d",
+        "type": "function",
         "z": "135b5f80cc1e3489",
-        "name": "Línea de Tiempo",
-        "group": "f227f3fc0b299afb",
-        "order": 1,
-        "width": 10,
-        "height": 6,
-        "label": "Tendencia de Actividad",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "0",
-        "ymax": "",
-        "removeOlder": "1",
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#ffc107",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
+        "name": "3. Lógica Física (Directa)",
+        "func": "// Extraemos datos directos del JSON sin imagen\nconst method = msg.payload.access_method || \"Físico\";\nconst isGranted = msg.payload.access_granted;\nconst device = msg.payload.device_id;\n\n// Guardamos contexto para consistencia\nflow.set('current_device', device);\nflow.set('current_method', method);\n\nlet prompt = \"\";\nlet username = \"Personal Autorizado\"; // En password/rfid a veces no sabemos el nombre exacto si no viene en el JSON\n\nif (isGranted && method !== \"door\") {\n    msg.access_final = true;\n    msg.log_status = \"GRANTED_PHYSICAL\";\n    // Si el JSON trae usuario, lo usamos, si no, genérico\n    if(msg.payload.username) username = msg.payload.username;\n    \n    prompt = `Genera un mensaje corto (10 palabras) con emojis confirmando acceso correcto mediante ${method}.`;\n} else {\n    if (method === \"door\") return\n    msg.access_final = false;\n    msg.log_status = \"DENIED_PHYSICAL\";\n    prompt = `Genera alerta breve: Clave o credencial incorrecta usando ${method}. Acceso denegado.`;\n}\n\nmsg.username = username;\n\n// Preparamos el mismo Payload para ChatGPT para que se una al flujo principal\nmsg.payload = {\n    \"model\": \"gpt-3.5-turbo\",\n    \"messages\": [\n        { \"role\": \"system\", \"content\": \"Eres un sistema de seguridad física para control de accesos dentro de una oficina.\" },\n        { \"role\": \"user\", \"content\": prompt }\n    ],\n    \"temperature\": 0.7\n};\n\nmsg.headers = {\n    \"Content-Type\": \"application/json\",\n    \"Authorization\": \"Bearer ---\" //removed key\n};\n\nreturn msg;",
         "outputs": 1,
-        "useDifferentColor": false,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 160,
+        "wires": [
+            [
+                "0bb8e14188d5add4"
+            ]
+        ]
+    },
+    {
+        "id": "727a44ca895e0ad5",
+        "type": "switch",
+        "z": "135b5f80cc1e3489",
+        "name": "¿Tiene Imagen?",
+        "property": "payload.img",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            },
+            {
+                "t": "null"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "7fee0535d5723271"
+            ],
+            [
+                "28eca9fbbb8c6d2d"
+            ]
+        ],
+        "outputLabels": [
+            "SI (Visual)",
+            "NO (Físico)"
+        ]
+    },
+    {
+        "id": "e411054f9004eca8",
+        "type": "debug",
+        "z": "135b5f80cc1e3489",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "b2815be5617b7cab",
+        "type": "inject",
+        "z": "3c4c569c94aec86c",
+        "name": "Auto Load",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "view",
+        "payloadType": "str",
+        "x": 150,
+        "y": 60,
+        "wires": [
+            [
+                "9e5cd5906531bb3e"
+            ]
+        ]
+    },
+    {
+        "id": "aa7a24d63dc89248",
+        "type": "ui_button",
+        "z": "3c4c569c94aec86c",
+        "name": "",
+        "group": "5045ab6426ef4a3c",
+        "order": 2,
+        "width": 4,
+        "height": 1,
+        "passthru": false,
+        "label": "DESCARGAR (CSV)",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
         "className": "",
-        "x": 1130,
-        "y": 600,
+        "icon": "fa-download",
+        "payload": "download",
+        "payloadType": "str",
+        "topic": "action",
+        "topicType": "msg",
+        "x": 140,
+        "y": 120,
+        "wires": [
+            [
+                "9e5cd5906531bb3e"
+            ]
+        ]
+    },
+    {
+        "id": "9e5cd5906531bb3e",
+        "type": "function",
+        "z": "3c4c569c94aec86c",
+        "name": "Query Last (No Img)",
+        "func": "const action = msg.payload; // 'view' o 'download'\n\n// Configuración Fija de Mongo\nmsg.collection = \"access_logs\";\nmsg.operation = \"find.toArray\";\n\n// Ordenar: Nuevo -> Viejo\nmsg.sort = { timestamp: -1 };\n\n// PROYECCIÓN (CRÍTICO): No traer fotos\nmsg.projection = { img: 0 };\n\n// Guardamos la acción para después\nmsg.action = action;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 80,
+        "wires": [
+            [
+                "f3dd118a1a97cf20"
+            ]
+        ]
+    },
+    {
+        "id": "f3dd118a1a97cf20",
+        "type": "mongodb in",
+        "z": "3c4c569c94aec86c",
+        "mongodb": "mongo_conn_iot",
+        "name": "Ejecutar Query",
+        "collection": "access_logs",
+        "operation": "find",
+        "x": 640,
+        "y": 80,
+        "wires": [
+            [
+                "df71f4057e9af552"
+            ]
+        ]
+    },
+    {
+        "id": "df71f4057e9af552",
+        "type": "switch",
+        "z": "3c4c569c94aec86c",
+        "name": "¿Tabla o CSV?",
+        "property": "action",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "view",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "download",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 840,
+        "y": 80,
+        "wires": [
+            [
+                "78ff65d177e6cfb9"
+            ],
+            [
+                "5ed53a2ef3a41ea6"
+            ]
+        ]
+    },
+    {
+        "id": "78ff65d177e6cfb9",
+        "type": "function",
+        "z": "3c4c569c94aec86c",
+        "name": "Formato Tabla",
+        "func": "const logs = msg.payload || [];\n\nconst tableData = logs.map(doc => {\n    const ts = new Date(doc.timestamp);\n    return {\n        \"Fecha\": ts.toLocaleDateString(),\n        \"Hora\": ts.toLocaleTimeString(),\n        \"Usuario\": doc.username || \"Desconocido\",\n        \"Estado\": doc.authorized ? \"PERMITIDO\" : \"DENEGADO\",\n        \"Detalle\": doc.ai_response || \"-\",\n        \"Dispositivo\": doc.device\n    };\n});\n\nmsg.payload = tableData;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1070,
+        "y": 40,
+        "wires": [
+            [
+                "805a1258e70318aa"
+            ]
+        ]
+    },
+    {
+        "id": "805a1258e70318aa",
+        "type": "ui_table",
+        "z": "3c4c569c94aec86c",
+        "group": "group_table",
+        "name": "Tabla Datos",
+        "order": 2,
+        "width": 21,
+        "height": 15,
+        "columns": [
+            {
+                "field": "Fecha",
+                "title": "Fecha",
+                "width": "100",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "Hora",
+                "title": "Hora",
+                "width": "100",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "Usuario",
+                "title": "Usuario",
+                "width": "120",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "Estado",
+                "title": "Estado",
+                "width": "120",
+                "align": "center",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "Detalle",
+                "title": "Mensaje Sistema",
+                "width": "auto",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            }
+        ],
+        "outputs": 0,
+        "cts": false,
+        "x": 1260,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "5ed53a2ef3a41ea6",
+        "type": "function",
+        "z": "3c4c569c94aec86c",
+        "name": "Generar CSV",
+        "func": "const logs = msg.payload || [];\n\nlet csv = \"Fecha,Hora,Usuario,Estado,Mensaje,Dispositivo,ID_Log\\n\";\n\nlogs.forEach(doc => {\n    const ts = new Date(doc.timestamp);\n    const fecha = ts.toLocaleDateString();\n    const hora = ts.toLocaleTimeString();\n    \n    // Limpieza de caracteres que rompen CSV\n    const user = (doc.username || \"Unknown\").replace(/,/g, \"\");\n    const status = doc.authorized ? \"PERMITIDO\" : \"DENEGADO\";\n    const text = (doc.ai_response || \"\").replace(/,/g, \".\").replace(/\\n/g, \" \");\n    const device = doc.device || \"\";\n    const id = doc._id || \"\";\n\n    csv += `${fecha},${hora},${user},${status},${text},${device},${id}\\n`;\n});\n\nmsg.payload = csv;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1070,
+        "y": 120,
+        "wires": [
+            [
+                "3d22cc80b2979d68"
+            ]
+        ]
+    },
+    {
+        "id": "3d22cc80b2979d68",
+        "type": "ui_template",
+        "z": "3c4c569c94aec86c",
+        "group": "5045ab6426ef4a3c",
+        "name": "Download Script",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "format": "<script>\n(function(scope){\n    scope.$watch('msg', function(msg) {\n        if (msg && msg.payload) {\n            var blob = new Blob([msg.payload], { type: 'text/csv;charset=utf-8;' });\n            var url = URL.createObjectURL(blob);\n            \n            var link = document.createElement(\"a\");\n            link.setAttribute(\"href\", url);\n            \n            var date = new Date().toISOString().slice(0,10);\n            link.setAttribute(\"download\", \"Reporte_\" + date + \".csv\");\n            \n            link.style.visibility = 'hidden';\n            document.body.appendChild(link);\n            link.click();\n            document.body.removeChild(link);\n        }\n    });\n})(scope);\n</script>",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 1280,
+        "y": 120,
         "wires": [
             []
         ]

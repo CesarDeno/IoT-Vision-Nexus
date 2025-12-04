@@ -7,6 +7,7 @@
         "node-red-contrib-image-tools": "~2.1.1",
         "node-red-contrib-string": "~1.0.0",
         "node-red-dashboard": "~3.6.6",
-        "node-red-node-mongodb": "~0.2.5"
+        "node-red-node-mongodb": "~0.2.5",
+        "node-red-node-ui-table": "~0.4.5"
     }
 }
